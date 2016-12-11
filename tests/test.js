@@ -1,29 +1,29 @@
-var Application = require('spectron').Application;
-var assert = require('chai').assert;
+let Application = require('spectron').Application;
+let assert = require('chai').assert;
+let expect = require('chai').expect;
 const path = require('path');
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
-// const FileBin = require('file-bin');
 
-var electronPath = path.join(__dirname, '..', 'node_modules', '.bin', 'electron');
-var appPath = path.join(__dirname, '..');
+let electronPath = path.join(__dirname, '..', 'node_modules', '.bin', 'electron');
+let appPath = path.join(__dirname, '..');
 
 global.before(() => {
-    chai.should();
-    chai.use(chaiAsPromised);
+  chai.should();
+  chai.use(chaiAsPromised);
 });
 
 describe('App starts and has correct title and buttons', () => {
 
-  var app = null;
+  let app = null;
 
   beforeEach(() => {
-      app = new Application({ path: electronPath, args: [appPath]});
-      return app.start();
+    app = new Application({ path: electronPath, args: [appPath]});
+    return app.start();
   });
 
   afterEach(() => {
-      return app.stop();
+    return app.stop();
   });
 
   it('opens a window', () => {
@@ -35,6 +35,12 @@ describe('App starts and has correct title and buttons', () => {
     return app.client.waitUntilWindowLoaded()
       .getTitle().should.eventually.equal('&#129472; Good Food');
   });
+
+  it('tests the search button is disabled on page load', () => {
+    $('#header').should.have.prop('disabled');
+    expect($('body')).to.have.prop('disabled', false);
+    expect($('body')).to.have.prop('value').match(/bar/);
+  });
 });
 
   // it('tests the Open File button text is not disabled', () => {
@@ -44,21 +50,10 @@ describe('App starts and has correct title and buttons', () => {
   //   });
   // });
 
-  // it('tests the Save button text is disabled', () => {
-  //   return app.client.getText('#save-markdown').then(function (buttonText) {
-  //     assert(buttonText === 'Save File');
-  //   });
-  // });
 
-  // it('tests the Open button opens a file dialog', () => {
-  //   return app.client.click('#open-file')
-  //   .then((dialog) => {
-  //     // Dialogs are tricky
-  //     assert.equal(dialog.status, 0);
-  //   });
 
 describe('Test accessibility', () => {
-  var app = null;
+  let app = null;
 
   beforeEach(() => {
     app = new Application({ path: electronPath, args: [appPath]});
