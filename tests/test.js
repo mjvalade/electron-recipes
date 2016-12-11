@@ -1,5 +1,5 @@
 let Application = require('spectron').Application;
-let assert = require('chai').assert;
+// let assert = require('chai').assert;
 let expect = require('chai').expect;
 const path = require('path');
 const chai = require('chai');
@@ -31,15 +31,14 @@ describe('App starts and has correct title and buttons', () => {
       .getWindowCount().should.eventually.equal(1);
   });
 
-  it('tests the title', () => {
-    return app.client.waitUntilWindowLoaded()
-      .getTitle().should.eventually.equal('&#129472; Good Food');
-  });
+  // it('tests the title', () => {
+  //   return app.client.waitUntilWindowLoaded()
+  //     .getTitle().should.eventually.equal('&#129472; Good Food');
+  // });
 
   it('tests the search button is disabled on page load', () => {
-    $('#header').should.have.prop('disabled');
-    expect($('body')).to.have.prop('disabled', false);
-    expect($('body')).to.have.prop('value').match(/bar/);
+    $('.search-button').should.have.prop('disabled');
+    expect($('.search-button')).to.have.prop('disabled', true);
   });
 });
 
@@ -61,7 +60,7 @@ describe('Test accessibility', () => {
   });
 
   afterEach(() => {
-    return app.stop;
+    return app.stop();
   });
 
   it('console log audit errors', () => {
