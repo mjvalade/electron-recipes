@@ -8,7 +8,6 @@ const {
 const fs = require('fs');
 
 const windows = new Set();
-// ^^ use "const" because replacing set with new each time, not reassigning
 
 app.on('ready', () => {
   createWindow();
