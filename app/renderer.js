@@ -3,7 +3,7 @@ const mainProcess = remote.require('./main');
 // const currentWindow = remote.getCurrentWindow();
 
 const $name = $('.name-input');
-const $photo = $('.photo-upload');
+// const $photo = $('.photo-upload');
 const $servings = $('.servings-input');
 const $time = $('.time-input');
 const $ingredients = $('.ingredients-input');

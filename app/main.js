@@ -6,7 +6,7 @@ const {
 const storage = require('electron-storage');
 
 app.on('ready', () => {
-  storageExists();
+  recipeStorageExists();
   createWindow();
 });
 
@@ -22,13 +22,13 @@ const createWindow = () => {
 
 const data = { saved: [] };
 
-const storageExists = () => {
+const recipeStorageExists = () => {
   storage.isPathExists('savedRecipes.json')
     .then(itDoes => {
       if (!itDoes) {
         storage.set('savedRecipes', data)
         .then(() => {
-          console.log('Recipe successfully written to storage');
+          console.log('Recipe storage exists');
         })
         .catch(err => {
           console.error(err);
