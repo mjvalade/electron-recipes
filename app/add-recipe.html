@@ -13,26 +13,33 @@
     <form class="add-recipe-form">
       <label class="name-label">
         Recipe Name
+        <input type="text" class="name-input" />
       </label>
       <label class="photo-label">
         Upload Photo
+        <input type="file" accept="image/*" class="photo-upload" />
       </label>
       <label class="servings-label">
         Number of Servings
+        <input type="number" class="servings-input" />
       </label>
       <label class="time-label">
         Cook Time
+        <input type="text" class="time-input" />
       </label>
       <label class="ingredients-label">
         Ingredients
+        <input type="text" class="ingredients-input" />
       </label>
       <label class="directions-label">
         Directions
+        <input type="textarea" class="directions-input" />
       </label>
       <label class="notes-label">
         Notes
+        <input type="textarea" class="notes-input" />
       </label>
-      <input type="submit" class="add-recipe-submit" value="Save" />
+      <input type="submit" class="add-recipe-button" value="Save" />
     </form>
     <footer>
       <section class="footer-features">
@@ -45,6 +52,11 @@
         <button type="button" class="footer-button home-button"><a href="index.html">Home</a></button>
       </section>
     </footer>
+
+    <script src="jquery.js" charset="utf-8"></script>
+    <script>
+      try { $ = jQuery = module.exports; } catch(e) {}
+    </script>
     <script>
       require('./renderer');
     </script>
