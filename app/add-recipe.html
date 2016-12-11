@@ -9,18 +9,40 @@
     <link rel="stylesheet" href="style.css" type="text/css">
   </head>
   <body>
-    <h1 class="title">Good Food</h1>
+    <h2 class="title-new">Add New Recipe</h2>
+    <form class="add-recipe-form">
+      <label class="name-label">
+        Recipe Name
+      </label>
+      <label class="photo-label">
+        Upload Photo
+      </label>
+      <label class="servings-label">
+        Number of Servings
+      </label>
+      <label class="time-label">
+        Cook Time
+      </label>
+      <label class="ingredients-label">
+        Ingredients
+      </label>
+      <label class="directions-label">
+        Directions
+      </label>
+      <label class="notes-label">
+        Notes
+      </label>
+      <input type="submit" class="add-recipe-submit" value="Save" />
+    </form>
     <footer class="footer">
       <section class="footer-features">
         <form class="" action="index.html" method="post">
           <input type="text" name="" placeholder="Search for recipe" />
           <input type="submit" class="footer-button" value="Search" />
         </form>
-
         <button type="button" class="footer-button">Add Recipe</button>
         <button type="button" class="footer-button">See All Recipes</button>
         <button type="button" class="footer-button">Home</button>
-
       </section>
     </footer>
     <script>require('./renderer');</script>
