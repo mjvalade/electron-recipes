@@ -1,6 +1,6 @@
 const { ipcRenderer, remote } = require('electron');
 const mainProcess = remote.require('./main');
-// const currentWindow = remote.getCurrentWindow();
+const currentWindow = remote.getCurrentWindow();
 
 const $name = $('.name-input');
 // const $photo = $('.photo-upload');
@@ -10,8 +10,9 @@ const $ingredients = $('.ingredients-input');
 const $directions = $('.directions-input');
 const $notes = $('.notes-input');
 const $addButton = $('.add-recipe-button');
+const $allButton = $('#all-button');
 
-mainProcess.getRecipes();
+// mainProcess.getRecipes();
 
 $addButton.on('click', () => {
   let name = $name.val();
@@ -22,4 +23,10 @@ $addButton.on('click', () => {
   let directions = $directions.val();
   let notes = $notes.val();
   mainProcess.saveRecipe({ name, servings, time, ingredients, directions, notes});
+  currentWindow.loadURL(`file://${__dirname}/all-recipes.html`);
+
+});
+
+$allButton.on('click', () => {
+  mainProcess.getRecipes();
 });

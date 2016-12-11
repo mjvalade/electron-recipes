@@ -54,7 +54,7 @@ const saveRecipe = exports.saveRecipe = (recipe) => {
       let updatedRecipes = { current: data.current, saved: data.saved };
       storage.set('savedRecipes', updatedRecipes)
         .then(() => {
-          console.log('Updated recipe list');
+          console.log('Updated recipe list', updatedRecipes);
         })
         .catch(err => {
           console.error(err);
