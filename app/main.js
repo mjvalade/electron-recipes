@@ -20,7 +20,7 @@ const createWindow = () => {
   return win;
 };
 
-const data = { saved: [] };
+const data = { recipes: [] };
 
 const recipeStorageExists = () => {
   storage.isPathExists('savedRecipes.json')
@@ -51,10 +51,10 @@ const saveRecipe = exports.saveRecipe = (recipe) => {
   storage.get('savedRecipes')
     .then((data) => {
       data.saved.unshift(recipe);
-      let updatedRecipes = { current: data.current, saved: data.saved };
+      let updatedRecipes = { recipes: data.saved };
       storage.set('savedRecipes', updatedRecipes)
         .then(() => {
-          console.log('Updated recipe list');
+          console.log('Updated recipe list', updatedRecipes);
         })
         .catch(err => {
           console.error(err);
