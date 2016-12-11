@@ -2,7 +2,7 @@
   "name": "electron-recipes",
   "version": "1.0.0",
   "description": "A desktop app to add and search for recipes, using Electronjs.",
-  "main": "index.js",
+  "main": "app/main.js",
   "scripts": {
     "start": "electron .",
     "test": "mocha tests/test.js"
@@ -29,6 +29,7 @@
     "chai-jquery": "^2.0.0",
     "devtron": "^1.4.0",
     "electron-packager": "^8.4.0",
+    "electron-rebuild": "^1.4.0",
     "eslint": "^3.12.0",
     "eslint-plugin-import": "^2.2.0",
     "file-bin": "^0.7.0",
