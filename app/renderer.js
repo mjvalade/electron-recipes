@@ -17,13 +17,7 @@ const $recipeCard = $('.recipe-card');
 
 mainProcess.getRecipes();
 
-// const loadRecipes = (recipe) => {
-//   renderRecipeCard(recipe);
-// };
-//
 const renderRecipeCard = (recipes) => {
-  // takes data of particular recipe
-  // appends some details to all-recipes as cards
   $recipeContainer.empty();
   recipes.forEach((recipe) => {
     $recipeContainer.append(`
@@ -72,7 +66,3 @@ $recipeCard.on('click', () => {
   renderRecipeCard();
   pageNav('full-recipe.html');
 });
-
-// ipcRenderer.on('retrieved-recipes', (event, data) => {
-//   loadRecipes(data);
-// });
