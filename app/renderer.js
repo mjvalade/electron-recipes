@@ -21,7 +21,6 @@ mainProcess.getRecipes();
 
 ipcRenderer.on('retrieved-recipes', (event, data) => {
   console.log('ipc data', data);
-  event.preventDefault();
   renderRecipeCard(data);
 });
 
