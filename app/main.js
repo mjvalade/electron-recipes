@@ -5,13 +5,15 @@ const {
 
 const storage = require('electron-storage');
 
+let win = null;
+
 app.on('ready', () => {
   recipeStorageExists();
   createWindow();
 });
 
 const createWindow = () => {
-  let win = new BrowserWindow({ show: false });
+  win = new BrowserWindow({ show: false });
   win.loadURL(`file://${__dirname}/index.html`);
   win.once('ready-to-show', () => win.show());
   win.on('closed',() => {
@@ -20,13 +22,13 @@ const createWindow = () => {
   return win;
 };
 
-const data = { recipes: [] };
+let data = { recipes: [] };
 
 const recipeStorageExists = () => {
-  storage.isPathExists('savedRecipes.json')
+  storage.isPathExists('saved-recipes.json')
     .then(itDoes => {
       if (!itDoes) {
-        storage.set('savedRecipes', data)
+        storage.set('saved-recipes', data)
         .then(() => {
           console.log('Recipe storage exists');
         })
@@ -38,8 +40,9 @@ const recipeStorageExists = () => {
 };
 
 const getRecipes = exports.getRecipes = () => {
-  storage.get('savedRecipes')
+  storage.get('saved-recipes')
   .then(data => {
+    win.webContents.send('retrieved-recipes', data);
     console.log(data);
   })
   .catch(err => {
@@ -48,19 +51,14 @@ const getRecipes = exports.getRecipes = () => {
 };
 
 const saveRecipe = exports.saveRecipe = (recipe) => {
-  storage.get('savedRecipes')
-    .then((data) => {
-      data.saved.unshift(recipe);
-      let updatedRecipes = { recipes: data.saved };
-      storage.set('savedRecipes', updatedRecipes)
-        .then(() => {
-          console.log('Updated recipe list', updatedRecipes);
-        })
-        .catch(err => {
-          console.error(err);
-        });
-    })
-    .catch(err => {
-      console.error(err);
-    });
+  storage.get('saved-recipes')
+  .then((data) => {
+    data.recipes.push(recipe);
+    let updatedRecipes = { recipes: data.recipes };
+    storage.set('saved-recipes', updatedRecipes)
+      .then(() => {console.log('Updated recipe list', updatedRecipes);
+      })
+      .catch((err) => console.log(err));
+  })
+  .catch(err => console.log(err));
 };

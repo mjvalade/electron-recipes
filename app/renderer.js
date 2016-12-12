@@ -12,6 +12,8 @@ const $saveButton = $('.save-recipe-button');
 const $seeAllButton = $('.see-all-button');
 const $homeButton = $('.home-button');
 const $addRecipeButton = $('.add-button');
+const $searchButton = $('.search-button');
+const $searchInput = $('.search-input');
 
 let pageNav = (page) => {
  currentWindow.loadURL(`file://${__dirname}/${page}`);
@@ -25,7 +27,7 @@ $saveButton.on('click', () => {
   let directions = $directions.val();
   let notes = $notes.val();
   let recipe = { name, servings, time, ingredients, directions, notes};
-  mainProcess.saveRecipe(recipe);
+  mainProcess.saveRecipe(currentWindow, recipe);
   pageNav('full-recipe.html');
 });
 
@@ -40,4 +42,12 @@ $homeButton.on('click', () => {
 
 $addRecipeButton.on('click', () => {
   pageNav('add-recipe.html');
+});
+
+$searchInput.on('keyup', () => {
+  if ($searchInput.val()) {
+    $searchButton.prop('disabled', false);
+  } else {
+    $searchButton.prop('disabled', true);
+  }
 });
