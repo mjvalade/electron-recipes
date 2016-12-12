@@ -16,11 +16,13 @@ const $searchButton = $('.search-button');
 const $searchInput = $('.search-input');
 const $recipeContainer = $('.recipe-list-container');
 const $recipeCard = $('.recipe-card');
+const $fullContainer = $('.full-recipe-container');
 
 let recipes = [];
 let recipe = {};
 
 mainProcess.getRecipes();
+
 
 ipcRenderer.on('retrieved-recipes', (event, data) => {
   console.log('ipc data', data);
@@ -43,10 +45,46 @@ const renderRecipeCard = (data) => {
   });
 };
 
-// const renderFullRecipe = () => {
-//
-// };
-// filter by id
+const renderFullRecipe = (data) => {
+  $fullContainer.empty();
+  data.recipes.filter((id) => {
+    $fullContainer.append(`
+      <div class="full-recipe" id=${recipe.id}>
+        <p class="display-name">
+          Recipe Name: ${recipe.name}
+        </p>
+        <p class="display-photo">
+          Image of Food
+        </p>
+        <p class="display-servings">
+          <h3>
+            Number of Servings: ${recipe.servings}
+          </h3>
+        </p>
+        <p class="display-time">
+          <h3>
+            Cook Time: ${recipe.time}
+          </h3>
+        </p>
+        <p class="display-ingredients">
+          <h3>
+            Ingredients: ${recipe.ingredients}
+          </h3>
+        </p>
+        <p class="display-directions">
+          <h3>
+            Directions: ${recipe.directions}
+          </h3>
+        </p>
+        <p class="display-notes">
+          <h3>
+            Notes: ${recipe.notes}
+          </h3>
+        </p>
+      </div>
+    `);
+  });
+};
 
 let pageNav = (page) => {
  currentWindow.loadURL(`file://${__dirname}/${page}`);
@@ -88,4 +126,6 @@ $searchInput.on('keyup', () => {
 
 $recipeCard.on('click', () => {
   pageNav('full-recipe.html');
+  mainProcess.getOneRecipe(recipe.id);
+  renderFullRecipe(recipe.id);
 });

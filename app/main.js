@@ -52,16 +52,13 @@ const getRecipes = exports.getRecipes = () => {
 const getOneRecipe = exports.getOneRecipe = (id) => {
   storage.get('saved-recipes')
   .then(data => {
-    win.webContents.send('retrieved-onerecipe', data);
+    console.log('one recipe?', data);
+    win.webContents.send('retrieved-recipes', data);
   })
   .catch(err => {
     console.error(err);
   });
 };
-// const getOneRecipe
-// pass in id to storage.get
-// .send that id
-
 
 const saveRecipe = exports.saveRecipe = (recipe) => {
   storage.get('saved-recipes')
