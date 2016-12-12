@@ -21,23 +21,23 @@ mainProcess.getRecipes();
 //   renderRecipeCard(recipe);
 // };
 //
-// const renderRecipeCard = (recipes) => {
-//   // takes data of particular recipe
-//   // appends some details to all-recipes as cards
-//   $recipeContainer.empty();
-//   recipes.forEach((recipe) => {
-//     $recipeContainer.append(`
-//       <div class="recipe-card" id=${recipe.name}>
-//         <a href="#">
-//           <img src="" alt="food image" />
-//           <section class="card-content">
-//             <h1 class="recipe-title">${recipe.name}</h1>
-//           </section>
-//         </a>
-//       </div>
-//     `);
-//   });
-// };
+const renderRecipeCard = (recipes) => {
+  // takes data of particular recipe
+  // appends some details to all-recipes as cards
+  $recipeContainer.empty();
+  recipes.forEach((recipe) => {
+    $recipeContainer.append(`
+      <div class="recipe-card" id=${recipe.name}>
+        <a href="#">
+          <img src="" alt="food image" />
+          <section class="card-content">
+            <h1 class="recipe-title">${recipe.name}</h1>
+          </section>
+        </a>
+      </div>
+    `);
+  });
+};
 
 let pageNav = (page) => {
  currentWindow.loadURL(`file://${__dirname}/${page}`);
@@ -69,6 +69,7 @@ $addRecipeButton.on('click', () => {
 });
 
 $recipeCard.on('click', () => {
+  renderRecipeCard();
   pageNav('full-recipe.html');
 });
 
