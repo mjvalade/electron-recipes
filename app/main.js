@@ -43,7 +43,6 @@ const getRecipes = exports.getRecipes = () => {
   storage.get('saved-recipes')
   .then(data => {
     win.webContents.send('retrieved-recipes', data);
-    console.log(data);
   })
   .catch(err => {
     console.error(err);
@@ -53,7 +52,7 @@ const getRecipes = exports.getRecipes = () => {
 const saveRecipe = exports.saveRecipe = (recipe) => {
   storage.get('saved-recipes')
   .then((data) => {
-    data.recipes.push(recipe);
+    data.recipes.unshift(recipe);
     let updatedRecipes = { recipes: data.recipes };
     storage.set('saved-recipes', updatedRecipes)
       .then(() => {console.log('Updated recipe list', updatedRecipes);
