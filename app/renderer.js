@@ -12,6 +12,30 @@ const $saveButton = $('.save-recipe-button');
 const $seeAllButton = $('.see-all-button');
 const $homeButton = $('.home-button');
 const $addRecipeButton = $('.add-button');
+const $recipeContainer = $('.recipe-list-container');
+const $recipeCard = $('.recipe-card');
+
+// const loadRecipes = (recipe) => {
+//   renderRecipeCard(recipe);
+// };
+//
+// const renderRecipeCard = (recipes) => {
+//   // takes data of particular recipe
+//   // appends some details to all-recipes as cards
+//   $recipeContainer.empty();
+//   recipes.forEach((recipe) => {
+//     $recipeContainer.append(`
+//       <div class="recipe-card" id=${recipe.name}>
+//         <a href="#">
+//           <img src="" alt="food image" />
+//           <section class="card-content">
+//             <h1 class="recipe-title">${recipe.name}</h1>
+//           </section>
+//         </a>
+//       </div>
+//     `);
+//   });
+// };
 
 let pageNav = (page) => {
  currentWindow.loadURL(`file://${__dirname}/${page}`);
@@ -41,3 +65,11 @@ $homeButton.on('click', () => {
 $addRecipeButton.on('click', () => {
   pageNav('add-recipe.html');
 });
+
+$recipeCard.on('click', () => {
+  pageNav('full-recipe.html');
+});
+
+// ipcRenderer.on('retrieved-recipes', (event, data) => {
+//   loadRecipes(data);
+// });
