@@ -2,12 +2,12 @@ const { ipcRenderer, remote } = require('electron');
 const mainProcess = remote.require('./main');
 const currentWindow = remote.getCurrentWindow();
 
-const $name = $('.name-input');
-const $servings = $('.servings-input');
-const $time = $('.time-input');
-const $ingredients = $('.ingredients-input');
-const $directions = $('.directions-input');
-const $notes = $('.notes-input');
+const $name = $('#name');
+const $servings = $('#servings');
+const $time = $('#cook-time');
+const $ingredients = $('#ingredients');
+const $directions = $('#directions');
+const $notes = $('#notes');
 const $saveButton = $('.save-recipe-button');
 const $seeAllButton = $('.see-all-button');
 const $homeButton = $('.home-button');
@@ -19,7 +19,7 @@ const $recipeCard = $('.recipe-card');
 const $fullContainer = $('.full-recipe-container');
 
 mainProcess.getRecipes();
-// mainProcess.getOneRecipe();
+mainProcess.getOneRecipe();
 
 ipcRenderer.on('retrieved-recipes', (event, data) => {
   console.log('ipc data', data.recipes);
@@ -28,7 +28,7 @@ ipcRenderer.on('retrieved-recipes', (event, data) => {
 
 ipcRenderer.on('retrieved-onerecipe', (event, data) => {
   console.log('ipc one recipe', data.recipes);
-  // renderFullRecipe(data);
+  renderFullRecipe(data);
 });
 
 const renderRecipeCard = (data) => {
@@ -45,46 +45,46 @@ const renderRecipeCard = (data) => {
   });
 };
 
-// const renderFullRecipe = (data) => {
-//   $fullContainer.empty();
-//   data.recipes.filter((id) => {
-//     $fullContainer.append(`
-//       <div class="full-recipe" id=${recipe.id}>
-//         <p class="display-name">
-//           Recipe Name: ${recipe.name}
-//         </p>
-//         <p class="display-photo">
-//           Image of Food
-//         </p>
-//         <p class="display-servings">
-//           <h3>
-//             Number of Servings: ${recipe.servings}
-//           </h3>
-//         </p>
-//         <p class="display-time">
-//           <h3>
-//             Cook Time: ${recipe.time}
-//           </h3>
-//         </p>
-//         <p class="display-ingredients">
-//           <h3>
-//             Ingredients: ${recipe.ingredients}
-//           </h3>
-//         </p>
-//         <p class="display-directions">
-//           <h3>
-//             Directions: ${recipe.directions}
-//           </h3>
-//         </p>
-//         <p class="display-notes">
-//           <h3>
-//             Notes: ${recipe.notes}
-//           </h3>
-//         </p>
-//       </div>
-//     `);
-//   });
-// };
+const renderFullRecipe = (data) => {
+  $fullContainer.empty();
+  data.recipes.filter((id) => {
+    $fullContainer.append(`
+      <div class="full-recipe" id=${recipe.id}>
+        <p class="display-name">
+          Recipe Name: ${recipe.name}
+        </p>
+        <p class="display-photo">
+          Image of Food
+        </p>
+        <p class="display-servings">
+          <h3>
+            Number of Servings: ${recipe.servings}
+          </h3>
+        </p>
+        <p class="display-time">
+          <h3>
+            Cook Time: ${recipe.time}
+          </h3>
+        </p>
+        <p class="display-ingredients">
+          <h3>
+            Ingredients: ${recipe.ingredients}
+          </h3>
+        </p>
+        <p class="display-directions">
+          <h3>
+            Directions: ${recipe.directions}
+          </h3>
+        </p>
+        <p class="display-notes">
+          <h3>
+            Notes: ${recipe.notes}
+          </h3>
+        </p>
+      </div>
+    `);
+  });
+};
 
 let pageNav = (page) => {
  currentWindow.loadURL(`file://${__dirname}/${page}`);
