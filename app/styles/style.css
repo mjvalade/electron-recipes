@@ -1,0 +1,16 @@
+/* HOME PAGE*/
+
+body {
+  background-color: #D9E8F5;
+  font-family: 'Roboto Slab', serif;
+}
+
+.main-title {
+  bottom: 58px;
+  color: #ff7844;
+  font-family: 'Bungee', sans-serif;
+  font-size: 4em;
+  margin-left: 20px;
+  position: fixed;
+  z-index: 1;
+}

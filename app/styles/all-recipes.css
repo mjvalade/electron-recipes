@@ -1,10 +1,10 @@
-.title-all {
-  font-family: $title-font;
-  margin-left: 20px;
-  margin-top: 20px;
-  font-size: 2em;
-  color: #ff7844;
-}
+// .title-all {
+//   font-family: $title-font;
+//   margin-left: 20px;
+//   margin-top: 20px;
+//   font-size: 2em;
+//   color: #ff7844;
+// }
 
 .recipe-list {
   display: flex;
