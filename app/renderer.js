@@ -47,7 +47,7 @@ $saveButton.on('click', () => {
   let directions = $directions.val();
   let notes = $notes.val();
   let recipe = { name, servings, time, ingredients, directions, notes};
-  mainProcess.saveRecipe(currentWindow, recipe);
+  mainProcess.saveRecipe(recipe);
   pageNav('full-recipe.html');
 });
 
