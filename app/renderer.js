@@ -43,11 +43,6 @@ const renderRecipeCard = (data) => {
   });
 };
 
-// const renderFullRecipe = () => {
-//
-// };
-// filter by id
-
 let pageNav = (page) => {
  currentWindow.loadURL(`file://${__dirname}/${page}`);
 };
