@@ -12,18 +12,14 @@ const $saveButton = $('.save-recipe-button');
 const $seeAllButton = $('.see-all-button');
 const $homeButton = $('.home-button');
 const $addRecipeButton = $('.add-button');
+const $searchButton = $('.search-button');
+const $searchInput = $('.search-input');
 const $recipeContainer = $('.recipe-list-container');
 const $recipeCard = $('.recipe-card');
 
 mainProcess.getRecipes();
 
-// const loadRecipes = (recipe) => {
-//   renderRecipeCard(recipe);
-// };
-//
 const renderRecipeCard = (recipes) => {
-  // takes data of particular recipe
-  // appends some details to all-recipes as cards
   $recipeContainer.empty();
   recipes.forEach((recipe) => {
     $recipeContainer.append(`
@@ -67,11 +63,15 @@ $addRecipeButton.on('click', () => {
   pageNav('add-recipe.html');
 });
 
+$searchInput.on('keyup', () => {
+  if ($searchInput.val()) {
+    $searchButton.prop('disabled', false);
+  } else {
+    $searchButton.prop('disabled', true);
+  }
+});
+
 $recipeCard.on('click', () => {
   renderRecipeCard();
   pageNav('full-recipe.html');
 });
-
-// ipcRenderer.on('retrieved-recipes', (event, data) => {
-//   loadRecipes(data);
-// });
