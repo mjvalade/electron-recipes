@@ -17,11 +17,23 @@ const $searchInput = $('.search-input');
 const $recipeContainer = $('.recipe-list-container');
 const $recipeCard = $('.recipe-card');
 
+let recipes = [];
+let recipe = {};
+
 mainProcess.getRecipes();
 
-const renderRecipeCard = (recipes) => {
+ipcRenderer.on('retrieved-recipes', (event, data) => {
+  console.log('ipc data', data);
+  renderRecipeCard(data);
+});
+
+// const loadRecipes = (data) => {
+//   renderRecipeCard(data);
+// };
+
+const renderRecipeCard = (data) => {
   $recipeContainer.empty();
-  recipes.forEach((recipe) => {
+  data.recipes.forEach((recipe) => {
     $recipeContainer.append(`
       <div class="recipe-card" id=${recipe.name}>
         <a href="#">
@@ -34,6 +46,9 @@ const renderRecipeCard = (recipes) => {
     `);
   });
 };
+
+// const renderFullRecipe
+// filter by id
 
 let pageNav = (page) => {
  currentWindow.loadURL(`file://${__dirname}/${page}`);
@@ -53,6 +68,7 @@ $saveButton.on('click', () => {
 
 $seeAllButton.on('click', () => {
   pageNav('all-recipes.html');
+  renderRecipeCard(recipes);
 });
 
 $homeButton.on('click', () => {
@@ -72,6 +88,5 @@ $searchInput.on('keyup', () => {
 });
 
 $recipeCard.on('click', () => {
-  renderRecipeCard();
   pageNav('full-recipe.html');
 });

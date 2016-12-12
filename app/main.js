@@ -43,16 +43,22 @@ const getRecipes = exports.getRecipes = () => {
   storage.get('saved-recipes')
   .then(data => {
     win.webContents.send('retrieved-recipes', data);
-    console.log(data);
+    // console.log('get data', data);
   })
   .catch(err => {
     console.error(err);
   });
 };
 
+// const getOneRecipe
+// pass in id to storage.get
+// .send that id
+
+// can add counter to saveRecipe and increment 1 each time to have an id available
 const saveRecipe = exports.saveRecipe = (recipe) => {
   storage.get('saved-recipes')
   .then((data) => {
+    // recipe.id = counter
     data.recipes.unshift(recipe);
     let updatedRecipes = { recipes: data.recipes };
     storage.set('saved-recipes', updatedRecipes)
