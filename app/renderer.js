@@ -53,13 +53,14 @@ let pageNav = (page) => {
 };
 
 $saveButton.on('click', () => {
+  let id = Date.now();
   let name = $name.val();
   let servings = $servings.val();
   let time = $time.val();
   let ingredients = $ingredients.val();
   let directions = $directions.val();
   let notes = $notes.val();
-  let recipe = { name, servings, time, ingredients, directions, notes};
+  let recipe = { id, name, servings, time, ingredients, directions, notes};
   mainProcess.saveRecipe(recipe);
   pageNav('full-recipe.html');
 });
