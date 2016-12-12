@@ -14,6 +14,26 @@ const $homeButton = $('.home-button');
 const $addRecipeButton = $('.add-button');
 const $searchButton = $('.search-button');
 const $searchInput = $('.search-input');
+const $recipeContainer = $('.recipe-list-container');
+const $recipeCard = $('.recipe-card');
+
+mainProcess.getRecipes();
+
+const renderRecipeCard = (recipes) => {
+  $recipeContainer.empty();
+  recipes.forEach((recipe) => {
+    $recipeContainer.append(`
+      <div class="recipe-card" id=${recipe.name}>
+        <a href="#">
+          <img src="" alt="food image" />
+          <section class="card-content">
+            <h1 class="recipe-title">${recipe.name}</h1>
+          </section>
+        </a>
+      </div>
+    `);
+  });
+};
 
 let pageNav = (page) => {
  currentWindow.loadURL(`file://${__dirname}/${page}`);
@@ -50,4 +70,9 @@ $searchInput.on('keyup', () => {
   } else {
     $searchButton.prop('disabled', true);
   }
+});
+
+$recipeCard.on('click', () => {
+  renderRecipeCard();
+  pageNav('full-recipe.html');
 });
