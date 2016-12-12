@@ -17,7 +17,7 @@ const $searchInput = $('.search-input');
 const $recipeContainer = $('.recipe-list-container');
 const $recipeCard = $('.recipe-card');
 
-mainProcess.getRecipes();
+// mainProcess.getRecipes();
 
 const renderRecipeCard = (recipes) => {
   $recipeContainer.empty();
@@ -54,6 +54,7 @@ $saveButton.on('click', () => {
 $seeAllButton.on('click', () => {
   mainProcess.getRecipes();
   pageNav('all-recipes.html');
+  renderRecipeCard();
 });
 
 $homeButton.on('click', () => {
@@ -75,4 +76,9 @@ $searchInput.on('keyup', () => {
 $recipeCard.on('click', () => {
   renderRecipeCard();
   pageNav('full-recipe.html');
+});
+
+ipcRenderer.on('retrieved-recipes', (event, recipes) => {
+  event.preventDefault();
+  mainProcess.getRecipes(recipes);
 });
