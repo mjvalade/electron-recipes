@@ -27,10 +27,6 @@ ipcRenderer.on('retrieved-recipes', (event, data) => {
   renderRecipeCard(data);
 });
 
-// const loadRecipes = (data) => {
-//   renderRecipeCard(data);
-// };
-
 const renderRecipeCard = (data) => {
   $recipeContainer.empty();
   data.recipes.forEach((recipe) => {
@@ -47,7 +43,9 @@ const renderRecipeCard = (data) => {
   });
 };
 
-// const renderFullRecipe
+// const renderFullRecipe = () => {
+//
+// };
 // filter by id
 
 let pageNav = (page) => {
