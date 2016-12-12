@@ -15,6 +15,8 @@ const $addRecipeButton = $('.add-button');
 const $recipeContainer = $('.recipe-list-container');
 const $recipeCard = $('.recipe-card');
 
+mainProcess.getRecipes();
+
 // const loadRecipes = (recipe) => {
 //   renderRecipeCard(recipe);
 // };

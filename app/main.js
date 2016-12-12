@@ -4,7 +4,6 @@ const {
 } = require('electron');
 
 const storage = require('electron-storage');
-const fs = require('fs');
 
 let win = null;
 
@@ -52,13 +51,7 @@ const getRecipes = exports.getRecipes = () => {
 };
 
 const saveRecipe = exports.saveRecipe = (recipe) => {
-  // fs.appendFile('saved-recipes.json', 'recipe');
-
   storage.get('saved-recipes')
-  // .then((data) => {
-  //   console.log(data);
-  // })
-
   .then((data) => {
     data.recipes.push(recipe);
     let updatedRecipes = { recipes: data.recipes };
