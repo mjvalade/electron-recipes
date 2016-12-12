@@ -14,40 +14,42 @@
   <body>
     <h2 class="title-new">Add New Recipe</h2>
     <form class="add-recipe-form">
-      <label class="name-label">
+      <label class="name-label label">
         Recipe Name
-        <input type="text" class="name-input" />
+        <input type="text" class="name-input input" />
       </label>
-      <label class="photo-label">
+      <label class="photo-label label">
         Upload Photo
         <input type="file" accept="image/*" class="photo-upload" />
       </label>
-      <label class="servings-label">
+      <label class="servings-label label">
         Number of Servings
-        <input type="number" class="servings-input" />
+        <input type="number" class="servings-input input" />
       </label>
-      <label class="time-label">
+      <label class="time-label label">
         Cook Time
-        <input type="text" class="time-input" />
+        <input type="text" class="time-input input" />
       </label>
-      <label class="ingredients-label">
+      <label class="ingredients-label label">
         Ingredients
-        <input type="text" class="ingredients-input" />
+        <input type="text" class="ingredients-input input" />
       </label>
-      <label class="directions-label">
+      <label class="directions-label label">
         Directions
-        <input type="textarea" class="directions-input" />
+        <input type="textarea" class="directions-input input" />
       </label>
-      <label class="notes-label">
+      <label class="notes-label label">
         Notes
-        <input type="textarea" class="notes-input" />
+        <input type="textarea" class="notes-input input" />
       </label>
-      <label for="save">
-        <input type="submit" name="save" class="save-recipe-button" value="Save" />
-      </label>
-      <label for="cancel">
-        <input type="reset" name="cancel" class="cancel-recipe-button" value="Cancel" />
-      </label>
+      <div class="button-container">
+        <label for="save">
+          <input type="submit" name="save" class="save-recipe-button" value="Save" />
+        </label>
+        <label for="cancel">
+          <input type="reset" name="cancel" class="cancel-recipe-button" value="Cancel" />
+        </label>
+      </div>
     </form>
     <footer>
       <section class="footer-features">
