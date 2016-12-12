@@ -49,16 +49,16 @@ const getRecipes = exports.getRecipes = () => {
   });
 };
 
-const getOneRecipe = exports.getOneRecipe = (id) => {
-  storage.get('saved-recipes')
-  .then(data => {
-    console.log('one recipe?', data);
-    win.webContents.send('retrieved-recipes', data);
-  })
-  .catch(err => {
-    console.error(err);
-  });
-};
+// const getOneRecipe = exports.getOneRecipe = (id) => {
+//   storage.get('saved-recipes')
+//   .then(data => {
+//     console.log('one recipe?', data);
+//     win.webContents.send('retrieved-onerecipe', data);
+//   })
+//   .catch(err => {
+//     console.error(err);
+//   });
+// };
 
 const saveRecipe = exports.saveRecipe = (recipe) => {
   storage.get('saved-recipes')
