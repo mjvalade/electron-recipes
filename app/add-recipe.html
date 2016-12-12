@@ -39,17 +39,22 @@
         Notes
         <input type="textarea" class="notes-input" />
       </label>
-      <input type="submit" class="add-recipe-button" value="Save" />
+      <label for="save">
+        <input type="submit" name="save" class="save-recipe-button" value="Save" />
+      </label>
     </form>
     <footer>
       <section class="footer-features">
         <form class="" action="index.html" method="post">
-          <input type="text" name="" placeholder="Search for recipe" />
+          <input type="text" placeholder="Search for recipe" />
           <input type="submit" class="footer-button search-button" value="Search" disabled />
         </form>
-        <button type="button" class="footer-button add-button"><a href="add-recipe.html">Add Recipe</a></button>
-        <button type="button" class="footer-button see-all-button"><a href="all-recipes.html">See All Recipes</a></button>
-        <button type="button" class="footer-button home-button"><a href="index.html">Home</a></button>
+        <button class="footer-button see-all-button">
+          See All Recipes
+        </button>
+        <button class="footer-button home-button">
+          Home
+        </button>
       </section>
     </footer>
 
@@ -57,7 +62,6 @@
     <script>
       try { $ = jQuery = module.exports; } catch(e) {}
     </script>
-    <script src="chai-jquery.js"></script>
     <script>
       require('./renderer');
     </script>
