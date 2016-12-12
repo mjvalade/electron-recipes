@@ -12,6 +12,8 @@ const $saveButton = $('.save-recipe-button');
 const $seeAllButton = $('.see-all-button');
 const $homeButton = $('.home-button');
 const $addRecipeButton = $('.add-button');
+const $searchButton = $('.search-button');
+const $searchInput = $('.search-input');
 const $recipeContainer = $('.recipe-list-container');
 const $recipeCard = $('.recipe-card');
 
@@ -60,6 +62,14 @@ $homeButton.on('click', () => {
 
 $addRecipeButton.on('click', () => {
   pageNav('add-recipe.html');
+});
+
+$searchInput.on('keyup', () => {
+  if ($searchInput.val()) {
+    $searchButton.prop('disabled', false);
+  } else {
+    $searchButton.prop('disabled', true);
+  }
 });
 
 $recipeCard.on('click', () => {
