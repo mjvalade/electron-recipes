@@ -20,10 +20,19 @@
             Recipe Name:
           </label>
           <input id="name" type="text" class="input" />
-          <label class="ingredients-label input-label" for="ingredients">
-            Ingredients:
-          </label>
-          <input id="ingredients" type="text" class="input" />
+
+
+
+          <div id="dynamicInput">
+            <label class="ingredients-label input-label" for="ingredients">
+              Ingredient 1:
+            </label>
+            <input id="ingredients" name="ingredientsList[]" type="text" class="input" />
+         </div>
+           <input type="button" value="Add another ingredient" class="new-ingredient-button" onClick="addInput('dynamicInput');">
+
+
+
           <label class="servings-label input-label" for="servings">
             Number of Servings:
           </label>
@@ -53,7 +62,7 @@
         <input type="submit" name="save" class="save-recipe-button" value="Save" />
         </label>
         <label for="cancel">
-        <input type="reset" name="cancel" class="cancel-recipe-button" value="Cancel" />
+        <input type="reset" name="cancel" class="cancel-recipe-button" value="Clear" />
         </label>
       </div>
     </form>

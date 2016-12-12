@@ -1,5 +1,4 @@
 let Application = require('spectron').Application;
-let expect = require('chai').expect;
 const path = require('path');
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');

@@ -25,15 +25,33 @@
   width: 50%;
 }
 
+#dynamicInput {
+  display: flex;
+  flex-direction: column;
+}
+
 .input-label {
   margin: 10px 0 5px 0;
 }
 
 .input {
-  height: 40px;
+  height: 30px;
   max-width: 300px;
 }
 
+.new-ingredient-button {
+  background: #ff7844;
+  border-radius: 15px;
+  border: none;
+  color: #1B1F3A;
+  font-size: 15px;
+  margin-left: 15px;
+  margin-top: 10px;
+  height: 25px;
+  width: 200px;
+}
+
+.new-ine
 .photo-label {
   padding-bottom: 5px;
 }
@@ -48,17 +66,18 @@
 
 .photo-upload::before {
  background-color: #FF7844;
- border-radius: 3px;
- border: 1px solid #999;
+ border-radius: 15px;
+ /*border: 1px solid #999;*/
  color: #1B1F3A;
  content: 'Select a file';
  cursor: pointer;
  display: inline-block;
- font-size: 10pt;
+ font-size: 15px;
  font-weight: 500;
- margin-left: 20px;
- min-width: 120px;
+ margin-left: 15px;
+ width: 120px;
  padding: 5px 8px;
+ text-align: center;
 }
 
 .photo-upload:hover::before {
