@@ -25,9 +25,8 @@
   width: 50%;
 }
 
-#dynamicInput {
-  display: flex;
-  flex-direction: column;
+.dynamicInput {
+  margin-top: 5px;
 }
 
 .input-label {
@@ -36,7 +35,12 @@
 
 .input {
   height: 30px;
+  min-width: 200px;
   max-width: 300px;
+}
+
+.ingredients-label {
+  margin-right: 2px;
 }
 
 .new-ingredient-button {

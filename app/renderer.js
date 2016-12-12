@@ -51,14 +51,21 @@ let pageNav = (page) => {
 let addInput = () => {
   let newListItem = `
     <label class="ingredients-label input-label" for="ingredients">
-      Ingredient +
-      ${inputCounter + 1} +:
+      Ingredient ${inputCounter + 1}:
     </label>
     <input id="ingredients" name="ingredientsList[]" type="text" class="input" />`;
 
   $('.dynamicInput').append(newListItem);
   inputCounter++;
 };
+
+$ingredients.on('keyup', () => {
+  if ($ingredients.val()) {
+    $newIngredient.prop('disabled', false);
+  } else {
+    $newIngredient.prop('disabled', true);
+  }
+});
 
 $newIngredient.on('click', (e) => {
   e.preventDefault();
