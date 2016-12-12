@@ -1,25 +1,66 @@
 .title-new {
-  color: #FF7844
-  font-family: 'Bungee', sans-serif;
-  font-size: 24px;
+  color: #FF7844;
+  font-size: 30px;
+  font-weight: 500;
   margin: 20px 0;
   text-align: center;
 }
 
 .add-recipe-form {
-  border: 1px solid blue;
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
   height: 75vh;
+  margin: 0 auto;
   width: 90vw;
-  /*overflow-y: scroll;*/
 }
 
-.label {
-  margin: 10px;
+.two-columns {
+  display: flex;
+  flex-direction: row;
+  min-height: 90%;
+}
+
+.left-container,
+.right-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.input-label {
+  margin: 10px 0 5px 0;
 }
 
 .input {
-  min-width: 200px;
+  height: 40px;
+  max-width: 300px;
+}
+
+.photo-label {
+  padding-bottom: 5px;
+}
+
+.photo-upload {
+  color: transparent;
+}
+
+.photo-upload::-webkit-file-upload-button {
+ visibility: hidden;
+}
+
+.photo-upload::before {
+ background-color: #FF7844;
+ border-radius: 3px;
+ border: 1px solid #999;
+ color: #1B1F3A;
+ content: 'Select a file';
+ cursor: pointer;
+ display: inline-block;
+ font-size: 10pt;
+ font-weight: 500;
+ margin-left: 20px;
+ min-width: 120px;
+ padding: 5px 8px;
+}
+
+.photo-upload:hover::before {
+  border: 2px solid #000;
 }

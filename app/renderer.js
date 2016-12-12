@@ -17,7 +17,7 @@ const $searchInput = $('.search-input');
 const $recipeContainer = $('.recipe-list-container');
 const $recipeCard = $('.recipe-card');
 
-// mainProcess.getRecipes();
+mainProcess.getRecipes();
 
 const renderRecipeCard = (recipes) => {
   $recipeContainer.empty();

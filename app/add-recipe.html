@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>&#129472; Good Eats</title>
+    <title>&#129472; Good Eats &#129472;</title>
      <link href="https://fonts.googleapis.com/css?family=Bungee|Roboto+Slab:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="./styles/reset.css" type="text/css">
     <link rel="stylesheet" href="./styles/style.css" type="text/css">
@@ -14,40 +14,46 @@
   <body>
     <h2 class="title-new">Add New Recipe</h2>
     <form class="add-recipe-form">
-      <label class="name-label label">
-        Recipe Name
-        <input type="text" class="name-input input" />
-      </label>
-      <label class="photo-label label">
-        Upload Photo
-        <input type="file" accept="image/*" class="photo-upload" />
-      </label>
-      <label class="servings-label label">
-        Number of Servings
-        <input type="number" class="servings-input input" />
-      </label>
-      <label class="time-label label">
-        Cook Time
-        <input type="text" class="time-input input" />
-      </label>
-      <label class="ingredients-label label">
-        Ingredients
-        <input type="text" class="ingredients-input input" />
-      </label>
-      <label class="directions-label label">
-        Directions
-        <input type="textarea" class="directions-input input" />
-      </label>
-      <label class="notes-label label">
-        Notes
-        <input type="textarea" class="notes-input input" />
-      </label>
+      <div class="two-columns">
+        <div class="left-container">
+          <label class="name-label input-label" for="name">
+            Recipe Name:
+          </label>
+          <input id="name" type="text" class="input" />
+          <label class="ingredients-label input-label" for="ingredients">
+            Ingredients:
+          </label>
+          <input id="ingredients" type="text" class="input" />
+          <label class="servings-label input-label" for="servings">
+            Number of Servings:
+          </label>
+          <input id="servings" type="number" class="input" />
+          <label class="time-label input-label" for="cook-time">
+            Cook Time:
+          </label>
+          <input id="cook-time" type="text" class="input" />
+        </div>
+        <div class="right-container">
+          <label class="photo-label input-label" for="photo">
+            Upload Photo:
+          </label>
+          <input id="photo" type="file" accept="image/*" class="photo-upload" />
+          <label class="directions-label input-label" for="directions">
+            Directions:
+          </label>
+          <input id="directions" type="textarea" class="input" />
+          <label class="notes-label input-label" for="notes">
+            Notes:
+          </label>
+          <input id="notes" type="textarea" class="input" />
+        </div>
+      </div>
       <div class="button-container">
         <label for="save">
-          <input type="submit" name="save" class="save-recipe-button" value="Save" />
+        <input type="submit" name="save" class="save-recipe-button" value="Save" />
         </label>
         <label for="cancel">
-          <input type="reset" name="cancel" class="cancel-recipe-button" value="Cancel" />
+        <input type="reset" name="cancel" class="cancel-recipe-button" value="Cancel" />
         </label>
       </div>
     </form>

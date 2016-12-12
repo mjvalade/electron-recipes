@@ -34,7 +34,7 @@ body {
   color: #1B1F3A;
   font-size: 15px;
   font-weight: bold;
-  height: 30px;
+  height: 35px;
   min-width: 130px;
 }
 
@@ -45,12 +45,11 @@ body {
   color: #FF7844;
 }
 
-/*.save-recipe-button,
-.cancel-recipe-button {
-  width: 300px;
-  background: #FF7844;
-  border: none;
-  border-radius: 5px;
-  color: #1B1F3A;
-  font-size: 15px;
-} */
+.button-container {
+  align-items: baseline;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0 auto;
+  width: 80vw;
+}
