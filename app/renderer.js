@@ -20,7 +20,6 @@ const $time = $('#time');
 
 
 let inputCounter = 1;
-let limit = 10;
 
 mainProcess.getRecipes();
 
@@ -49,25 +48,21 @@ let pageNav = (page) => {
   currentWindow.loadURL(`file://${__dirname}/${page}`);
 };
 
+let addInput = () => {
+  let newListItem = `
+    <label class="ingredients-label input-label" for="ingredients">
+      Ingredient +
+      ${inputCounter + 1} +:
+    </label>
+    <input id="ingredients" name="ingredientsList[]" type="text" class="input" />`;
 
-// let addInput = (item) => {
+  $('.dynamicInput').append(newListItem);
+  inputCounter++;
+};
 
-  // var newDiv = document.createElement('div');
-  // newDiv.innerHTML = "Ingredient " + (counter + 1) + "<input type='text' name='myIngredients[]'>";
-  // document.getElementById(divName).appendChild(newdiv);
-  // counter++;
-
-  // $('body').append('<p>This is the text in new element.<p>');
-  // let newListItem = `<label class="ingredients-label input-label" for="ingredients">
-  //     Ingredient + ${counter + 1} +:
-  //   </label>
-  //   <input id="ingredients" name="ingredientsList[]" type="text" class="input" />`
-  // $('.dynamicInput').append();
-  // newItem.val()
-// };
-
-$newIngredient.on('click', () => {
-
+$newIngredient.on('click', (e) => {
+  e.preventDefault();
+  addInput();
 });
 
 $saveButton.on('click', () => {
