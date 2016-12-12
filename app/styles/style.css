@@ -1,0 +1,55 @@
+/* HOME PAGE*/
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: #D9E8F5;
+  color: #1B1F3A;
+  font-family: 'Roboto Slab', serif;
+}
+
+.main-title {
+  bottom: 58px;
+  color: #ff7844;
+  font-family: 'Bungee', sans-serif;
+  font-size: 4em;
+  margin-left: 20px;
+  position: fixed;
+  z-index: 1;
+}
+
+/* BUTTON STYLES */
+
+.footer-button,
+.save-recipe-button,
+.cancel-recipe-button {
+  background: #ff7844;
+  border-radius: 15px;
+  border: none;
+  color: #1B1F3A;
+  font-size: 15px;
+  font-weight: bold;
+  height: 35px;
+  min-width: 130px;
+}
+
+.footer-button:hover,
+.cancel-recipe-button:hover,
+.save-recipe-button:hover {
+  background: #FFF;
+  color: #FF7844;
+}
+
+.button-container {
+  align-items: baseline;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0 auto;
+  width: 80vw;
+}

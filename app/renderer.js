@@ -17,13 +17,11 @@ const $searchInput = $('.search-input');
 const $recipeContainer = $('.recipe-list-container');
 const $recipeCard = $('.recipe-card');
 
-let recipes = [];
-let recipe = {};
-
 mainProcess.getRecipes();
 
 ipcRenderer.on('retrieved-recipes', (event, data) => {
   console.log('ipc data', data);
+  event.preventDefault();
   renderRecipeCard(data);
 });
 
@@ -61,7 +59,7 @@ $saveButton.on('click', () => {
 
 $seeAllButton.on('click', () => {
   pageNav('all-recipes.html');
-  renderRecipeCard(recipes);
+  renderRecipeCard();
 });
 
 $homeButton.on('click', () => {
