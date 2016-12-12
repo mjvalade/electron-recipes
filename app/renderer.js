@@ -8,10 +8,16 @@ const $time = $('.time-input');
 const $ingredients = $('.ingredients-input');
 const $directions = $('.directions-input');
 const $notes = $('.notes-input');
-const $addButton = $('.add-recipe-button');
-const $allButton = $('#all-button');
+const $saveButton = $('.save-recipe-button');
+const $seeAllButton = $('.see-all-button');
+const $homeButton = $('.home-button');
+const $addRecipeButton = $('.add-button');
 
-$addButton.on('click', () => {
+let pageNav = (page) => {
+ currentWindow.loadURL(`file://${__dirname}/${page}`);
+};
+
+$saveButton.on('click', () => {
   let name = $name.val();
   let servings = $servings.val();
   let time = $time.val();
@@ -20,9 +26,18 @@ $addButton.on('click', () => {
   let notes = $notes.val();
   let recipe = { name, servings, time, ingredients, directions, notes};
   mainProcess.saveRecipe(recipe);
-  currentWindow.loadURL(`file://${__dirname}/all-recipes.html`);
+  pageNav('full-recipe.html');
 });
 
-$allButton.on('click', () => {
+$seeAllButton.on('click', () => {
   mainProcess.getRecipes();
+  pageNav('all-recipes.html');
+});
+
+$homeButton.on('click', () => {
+  pageNav('index.html');
+});
+
+$addRecipeButton.on('click', () => {
+  pageNav('add-recipe.html');
 });
