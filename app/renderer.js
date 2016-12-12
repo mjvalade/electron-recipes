@@ -56,7 +56,6 @@ $saveButton.on('click', () => {
 });
 
 $seeAllButton.on('click', () => {
-  mainProcess.getRecipes();
   pageNav('all-recipes.html');
 });
 
