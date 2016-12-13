@@ -1,10 +1,9 @@
-// .title-all {
-//   font-family: $title-font;
-//   margin-left: 20px;
-//   margin-top: 20px;
-//   font-size: 2em;
-//   color: #ff7844;
-// }
+.title-all {
+  margin-left: 20px;
+  margin-top: 20px;
+  font-size: 2em;
+  color: #ff7844;
+}
 
 .recipe-list {
   display: flex;
@@ -15,7 +14,6 @@
 
 .recipe-card {
   background-color: white;
-  // border: 1px solid #0C273D;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
