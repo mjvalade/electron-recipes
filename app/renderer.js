@@ -2,22 +2,26 @@ const { ipcRenderer, remote } = require('electron');
 const mainProcess = remote.require('./main');
 const currentWindow = remote.getCurrentWindow();
 
-const $name = $('#name');
-const $servings = $('#servings');
-const $time = $('#cook-time');
-const $ingredients = $('#ingredients');
-const $directions = $('#directions');
-const $notes = $('#notes');
-const $saveButton = $('.save-recipe-button');
-const $seeAllButton = $('.see-all-button');
-const $homeButton = $('.home-button');
 const $addRecipeButton = $('.add-button');
+const $directions = $('#directions');
+const $fullContainer = $('.full-recipe-container');
+const $homeButton = $('.home-button');
+const $ingredients = $('#ingredients');
+const $name = $('#name');
+const $newIngredient = $('.new-ingredient-button');
+const $notes = $('#notes');
+const $recipeCard = $('.recipe-card');
+const $recipeContainer = $('.recipe-list-container');
+const $saveButton = $('.save-recipe-button');
 const $searchButton = $('.search-button');
 const $searchInput = $('.search-input');
-const $recipeContainer = $('.recipe-list-container');
-const $recipeCard = $('.recipe-card');
-const $fullContainer = $('.full-recipe-container');
 const $deleteButton = $('.delete-button');
+const $seeAllButton = $('.see-all-button');
+const $servings = $('#servings');
+const $time = $('#time');
+const $newDirections = $('.new-direction-button');
+
+let inputCounter = 1;
 
 mainProcess.getRecipes();
 // mainProcess.getOneRecipe();
@@ -93,8 +97,24 @@ const renderFullRecipe = (data) => {
 };
 
 let pageNav = (page) => {
- currentWindow.loadURL(`file://${__dirname}/${page}`);
+  currentWindow.loadURL(`file://${__dirname}/${page}`);
 };
+
+let addInput = () => {
+  let newListItem = `
+    <label class="ingredients-label input-label" for="ingredients">
+      Ingredient ${inputCounter + 1}:
+    </label>
+    <input id="ingredients" name="ingredientsList[]" type="text" class="input" />`;
+
+  $('.dynamicIngredient').append(newListItem);
+  inputCounter++;
+};
+
+$newIngredient.on('click', (e) => {
+  e.preventDefault();
+  addInput();
+});
 
 $saveButton.on('click', () => {
   let id = Date.now();
@@ -130,8 +150,23 @@ $searchInput.on('keyup', () => {
   }
 });
 
-$recipeCard.on('click', (id) => {
-  // mainProcess.getOneRecipe(id);
-  pageNav('full-recipe.html');
+$ingredients.on('keyup', () => {
+  if ($ingredients.val()) {
+    $newIngredient.prop('disabled', false);
+  } else {
+    $newIngredient.prop('disabled', true);
+  }
+});
+
+$ingredients.on('keyup', () => {
+  if ($ingredients.val()) {
+    $newIngredient.prop('disabled', false);
+  } else {
+    $newIngredient.prop('disabled', true);
+  }
+});
+
+$recipeCard.on('click', () => {
+  // pageNav('full-recipe.html');
   renderFullRecipe(id);
 });
