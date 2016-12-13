@@ -20,6 +20,7 @@ const $seeAllButton = $('.see-all-button');
 const $servings = $('#servings');
 const $time = $('#time');
 const $newDirections = $('.new-direction-button');
+const array = [];
 
 let inputCounter = 1;
 
@@ -27,8 +28,9 @@ mainProcess.getRecipes();
 // mainProcess.getOneRecipe();
 
 ipcRenderer.on('retrieved-recipes', (event, data) => {
-  console.log('ipc data', data.recipes);
-  renderRecipeCard(data);
+  data.recipes.forEach((r) => array.push(r));
+  console.log('ipc data', array);
+  renderRecipeCard(array);
 });
 
 // ipcRenderer.on('retrieved-onerecipe', (event, data) => {
@@ -36,63 +38,66 @@ ipcRenderer.on('retrieved-recipes', (event, data) => {
 //   renderFullRecipe(data);
 // });
 
-const renderRecipeCard = (data) => {
+const renderRecipeCard = (recipes) => {
   $recipeContainer.empty();
-  data.recipes.forEach((recipe) => {
+  recipes.forEach((recipe) => {
     $recipeContainer.append(`
-      <a href="full-recipe.html">
       <section class="recipe-card" id=${recipe.id}>
         <img src="" alt="food image" />
         <article class="card-content">
           <h1 class="recipe-title">${recipe.name}</h1>
         </article>
       </section>
-      </a>
     `);
+  });
+  $('.recipe-card').on('click', (e) => {
+    pageNav('full-recipe.html');
+    renderFullRecipe(parseInt(e.currentTarget.id));
   });
 };
 
-const renderFullRecipe = (data) => {
+const renderFullRecipe = (id) => {
   $fullContainer.empty();
-  data.recipes.find((id) => {
-    $fullContainer.append(`
-      <div class="full-recipe" id=${recipe.id}>
-        <p class="display-name">
-          Recipe Name: ${recipe.name}
-        </p>
-        <p class="display-photo">
-          Image of Food
-        </p>
-        <p class="display-servings">
-          <h3>
-            Number of Servings: ${recipe.servings}
-          </h3>
-        </p>
-        <p class="display-time">
-          <h3>
-            Cook Time: ${recipe.time}
-          </h3>
-        </p>
-        <p class="display-ingredients">
-          <h3>
-            Ingredients: ${recipe.ingredients}
-          </h3>
-        </p>
-        <p class="display-directions">
-          <h3>
-            Directions: ${recipe.directions}
-          </h3>
-        </p>
-        <p class="display-notes">
-          <h3>
-            Notes: ${recipe.notes}
-          </h3>
-        </p>
-        <button class="footer-button delete-button">
-          Delete
-        </button>
-      </div>
-    `);
+  array.forEach(recipe => {
+    if(recipe.id === id) {
+      debugger
+      $fullContainer.append(`
+        <div class="full-recipe" id=${recipe.id}>
+          <p class="display-name">
+            Recipe Name: ${recipe.name}
+          </p>
+          <img src="" alt="food image" />
+          <p class="display-servings">
+            <h3>
+              Number of Servings: ${recipe.servings}
+            </h3>
+          </p>
+          <p class="display-time">
+            <h3>
+              Cook Time: ${recipe.time}
+            </h3>
+          </p>
+          <p class="display-ingredients">
+            <h3>
+              Ingredients: ${recipe.ingredients}
+            </h3>
+          </p>
+          <p class="display-directions">
+            <h3>
+              Directions: ${recipe.directions}
+            </h3>
+          </p>
+          <p class="display-notes">
+            <h3>
+              Notes: ${recipe.notes}
+            </h3>
+          </p>
+          <button class="footer-button delete-button">
+            Delete
+          </button>
+        </div>
+      `);
+    }
   });
 };
 
@@ -164,9 +169,4 @@ $ingredients.on('keyup', () => {
   } else {
     $newIngredient.prop('disabled', true);
   }
-});
-
-$recipeCard.on('click', () => {
-  // pageNav('full-recipe.html');
-  renderFullRecipe(id);
 });

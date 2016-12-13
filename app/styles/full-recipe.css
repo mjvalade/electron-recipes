@@ -1,0 +1,23 @@
+.display-name {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-size: 2em;
+  color: #ff7844;
+}
+
+.labels {
+  font-weight: bold;
+  font-size: 1.25em;
+}
+
+.display-text {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: 20px;
+  font-size: 1.25em;
+}
+
+.display-photo {
+  margin-left: 20px;
+}
