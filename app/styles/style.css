@@ -23,6 +23,12 @@ body {
   z-index: 1;
 }
 
+.background-image {
+  background-image: url(../assets/food.jpg);
+  height: 600px;
+  width: 850px;
+}
+
 /* MAIN BUTTON STYLES */
 
 .footer-button,

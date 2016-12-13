@@ -6,6 +6,8 @@ const {
 const storage = require('electron-storage');
 
 let win = null;
+let recipe;
+let recipes = [];
 
 app.on('ready', () => {
   recipeStorageExists();
@@ -13,7 +15,10 @@ app.on('ready', () => {
 });
 
 const createWindow = () => {
-  win = new BrowserWindow({ show: false });
+  win = new BrowserWindow({
+    width: 850,
+    height: 600,
+    show: false });
   win.loadURL(`file://${__dirname}/index.html`);
   win.once('ready-to-show', () => win.show());
   win.on('closed',() => {
@@ -56,6 +61,21 @@ const saveRecipe = exports.saveRecipe = (recipe) => {
     let updatedRecipes = { recipes: data.recipes };
     storage.set('saved-recipes', updatedRecipes)
       .then(() => {console.log('Updated recipe list', updatedRecipes);
+      })
+      .catch((err) => console.log(err));
+  })
+  .catch(err => console.log(err));
+};
+
+const deleteRecipe = exports.deleteRecipe = (recipe) => {
+  storage.get('saved-recipes')
+  .then((data) => {
+    data.recipes.filter((recipe) => {
+      return recipe.id !== id;
+    });
+    let updatedRecipes = { recipes: data.recipes };
+    storage.set('saved-recipes', updatedRecipes)
+      .then(() => {console.log('Shorter recipe list', updatedRecipes);
       })
       .catch((err) => console.log(err));
   })
