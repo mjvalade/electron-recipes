@@ -14,25 +14,27 @@
   <body>
     <h2 class="title-new">Add New Recipe</h2>
     <form class="add-recipe-form">
+      <div class="button-container">
+        <label for="save">
+          <input type="submit" name="save" class="save-recipe-button" value="Save" />
+        </label>
+        <label for="cancel">
+          <input type="reset" name="cancel" class="cancel-recipe-button" value="Clear" />
+        </label>
+      </div>
       <div class="two-columns">
         <div class="left-container">
           <label class="name-label input-label" for="name">
             Recipe Name:
           </label>
           <input id="name" type="text" class="input" />
-
-
-
-          <div class="dynamicInput">
+          <div class="dynamicIngredients">
             <label class="ingredients-label input-label" for="ingredients">
               Ingredient 1:
             </label>
             <input id="ingredients" name="ingredientsList[]" type="text" class="input" />
          </div>
            <input type="button" value="Add another ingredient" class="new-ingredient-button disabled" disabled>
-
-
-
           <label class="servings-label input-label" for="servings">
             Number of Servings:
           </label>
@@ -47,23 +49,18 @@
             Upload Photo:
           </label>
           <input id="photo" type="file" accept="image/*" class="photo-upload" />
-          <label class="directions-label input-label" for="directions">
-            Directions:
-          </label>
-          <input id="directions" type="textarea" class="input" />
+          <div class="dynamicDirections">
+            <label class="directions-label input-label" for="directions">
+              Directions:
+            </label>
+            <input id="directions" name="directionsList[]" type="text" class="input" />
+         </div>
+           <input type="button" value="Add another direction" class="new-direction-button disabled" disabled>
           <label class="notes-label input-label" for="notes">
             Notes:
           </label>
           <input id="notes" type="textarea" class="input" />
         </div>
-      </div>
-      <div class="button-container">
-        <label for="save">
-        <input type="submit" name="save" class="save-recipe-button" value="Save" />
-        </label>
-        <label for="cancel">
-        <input type="reset" name="cancel" class="cancel-recipe-button" value="Clear" />
-        </label>
       </div>
     </form>
     <footer>

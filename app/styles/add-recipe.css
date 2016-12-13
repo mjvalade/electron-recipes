@@ -25,8 +25,14 @@
   width: 50%;
 }
 
-.dynamicInput {
+.dynamicIngredients,
+.dynamicDirections {
   margin-top: 5px;
+}
+
+.dynamicDirections {
+  display: flex;
+  flex-direction: column;
 }
 
 .input-label {
@@ -34,6 +40,7 @@
 }
 
 .input {
+  font-size: 16px;
   height: 30px;
   min-width: 200px;
   max-width: 300px;
@@ -43,13 +50,14 @@
   margin-right: 2px;
 }
 
-.new-ingredient-button {
+.new-ingredient-button,
+.new-direction-button {
   background: #ff7844;
   border-radius: 15px;
   border: none;
   color: #1B1F3A;
   font-size: 15px;
-  margin-left: 15px;
+  margin-left: 40px;
   margin-top: 10px;
   height: 25px;
   width: 200px;
@@ -71,7 +79,6 @@
 .photo-upload::before {
  background-color: #FF7844;
  border-radius: 15px;
- /*border: 1px solid #999;*/
  color: #1B1F3A;
  content: 'Select a file';
  cursor: pointer;

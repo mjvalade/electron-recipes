@@ -17,7 +17,7 @@ const $searchInput = $('.search-input');
 const $seeAllButton = $('.see-all-button');
 const $servings = $('#servings');
 const $time = $('#time');
-
+const $newDirections = $('.new-direction-button');
 
 let inputCounter = 1;
 
@@ -55,17 +55,9 @@ let addInput = () => {
     </label>
     <input id="ingredients" name="ingredientsList[]" type="text" class="input" />`;
 
-  $('.dynamicInput').append(newListItem);
+  $('.dynamicIngredient').append(newListItem);
   inputCounter++;
 };
-
-$ingredients.on('keyup', () => {
-  if ($ingredients.val()) {
-    $newIngredient.prop('disabled', false);
-  } else {
-    $newIngredient.prop('disabled', true);
-  }
-});
 
 $newIngredient.on('click', (e) => {
   e.preventDefault();
@@ -102,6 +94,22 @@ $searchInput.on('keyup', () => {
     $searchButton.prop('disabled', false);
   } else {
     $searchButton.prop('disabled', true);
+  }
+});
+
+$ingredients.on('keyup', () => {
+  if ($ingredients.val()) {
+    $newIngredient.prop('disabled', false);
+  } else {
+    $newIngredient.prop('disabled', true);
+  }
+});
+
+$ingredients.on('keyup', () => {
+  if ($ingredients.val()) {
+    $newIngredient.prop('disabled', false);
+  } else {
+    $newIngredient.prop('disabled', true);
   }
 });
 
