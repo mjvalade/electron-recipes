@@ -19,7 +19,7 @@ const $searchInput = $('.search-input');
 const $deleteButton = $('.delete-button');
 const $seeAllButton = $('.see-all-button');
 const $servings = $('#servings');
-const $time = $('#time');
+const $time = $('#cook-time');
 const $newDirection = $('.new-direction-button');
 const array = [];
 
