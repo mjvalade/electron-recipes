@@ -34,15 +34,11 @@ ipcRenderer.on('retrieved-recipes', (event, data) => {
   renderFullRecipe(array);
 });
 
-const toggleClass = () => {
+const showHide = () => {
   $recipeContainer.toggleClass('hidden');
   $fullContainer.toggleClass('hidden');
+  $seeAllButton.toggleClass('hidden');
 };
-
-$('.close-button').on('click', () => {
-  console.log('close click');
-  toggleClass();
-});
 
 const renderRecipeCard = (recipes) => {
   $recipeContainer.empty();
@@ -57,7 +53,7 @@ const renderRecipeCard = (recipes) => {
     `);
   });
   $('.recipe-card').on('click', (e) => {
-    toggleClass();
+    showHide();
     renderFullRecipe(parseInt(e.currentTarget.id));
   });
 };
@@ -68,14 +64,9 @@ const renderFullRecipe = (id) => {
     if(recipe.id === id) {
       $fullContainer.append(`
         <div class="full-recipe" id=${recipe.id}>
-          <section class="top-buttons">
-            <button class="close-button">
-              &#88;
-            </button>
-            <button class="footer-button delete-button">
-              Delete Recipe
-            </button>
-          </section>
+          <button class="footer-button delete-button">
+            Delete Recipe
+          </button>
           <p class="display-name">
             <span class="labels">${recipe.name}</span>
           </p>

@@ -5,25 +5,8 @@
   margin-top: 30px;
 }
 
-.top-buttons {
-  display: flex;
-  justify-content: space-around;
-}
-
-.close-button {
-  background: #ff7844;
-  border-radius: 50%;
-  border: none;
-  color: #1B1F3A;
-  font-size: 15px;
-  font-weight: bold;
-  height: 35px;
-  width: 35px;
-}
-
-.close-button:hover {
-  background: #FFF;
-  color: #FF7844;
+.delete-button {
+  margin-left: auto;
 }
 
 .display-name {
