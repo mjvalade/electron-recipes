@@ -15,7 +15,10 @@ app.on('ready', () => {
 });
 
 const createWindow = () => {
-  win = new BrowserWindow({ show: false });
+  win = new BrowserWindow({
+    width: 850,
+    height: 600,
+    show: false });
   win.loadURL(`file://${__dirname}/index.html`);
   win.once('ready-to-show', () => win.show());
   win.on('closed',() => {
