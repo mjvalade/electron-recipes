@@ -20,10 +20,10 @@ a {
   display: inline-flex;
   flex-direction: column;
   height: 200px;
-  width: 250px;
   margin-bottom: 35px;
   margin-left: 10px;
   margin-right: 10px;
+  width: 250px;
 }
 
 .recipe-card:hover {
@@ -35,8 +35,8 @@ a {
 }
 
 img {
-  padding: 5px;
   height: 120px;
+  padding: 5px;
   width: 250px;
 }
 

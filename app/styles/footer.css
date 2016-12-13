@@ -22,12 +22,20 @@ footer {
   font-size: 18px;
 }
 
-.search-input {
-  border-radius: 5px;
+.footer-button {
+  background: #ff7844;
+  border-radius: 15px;
+  border: none;
   color: #1B1F3A;
-  height: 25px;
-  margin: 0 25px 0 20px;
-  padding-left: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  height: 35px;
+  min-width: 130px;
+}
+
+.footer-button:hover {
+  background: #FFF;
+  color: #FF7844;
 }
 
 ::-webkit-input-placeholder {
