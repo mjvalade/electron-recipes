@@ -3,24 +3,20 @@ const mainProcess = remote.require('./main');
 const currentWindow = remote.getCurrentWindow();
 
 const $addRecipeButton = $('.add-button');
-const $closeButton = $('.close-button');
 const $directions = $('#directions');
 const $fullContainer = $('.full-recipe-container');
 const $homeButton = $('.home-button');
 const $ingredients = $('#ingredients');
 const $name = $('#name');
+const $newDirection = $('.new-direction-button');
 const $newIngredient = $('.new-ingredient-button');
 const $notes = $('#notes');
-const $recipeCard = $('.recipe-card');
 const $recipeContainer = $('.recipe-list-container');
 const $saveButton = $('.save-recipe-button');
-const $searchButton = $('.search-button');
-const $searchInput = $('.search-input');
-const $deleteButton = $('.delete-button');
 const $seeAllButton = $('.see-all-button');
 const $servings = $('#servings');
 const $time = $('#cook-time');
-const $newDirection = $('.new-direction-button');
+
 const array = [];
 
 let inputCounter = 1;
@@ -65,9 +61,6 @@ const renderFullRecipe = (id) => {
     if(recipe.id === id) {
       $fullContainer.append(`
         <div class="full-recipe" id=${recipe.id}>
-          <button class="footer-button delete-button">
-            Delete Recipe
-          </button>
           <p class="display-name">
             <span class="labels">${recipe.name}</span>
           </p>
@@ -102,16 +95,14 @@ let addInput = () => {
     <label class="ingredients-label input-label" for="ingredients">
       Ingredient ${inputCounter + 1}:
     </label>
-    <input id="ingredients" name="ingredientsList[]" type="text" class="input" />`;
+    <input id="ingredients" name="ingredientsList[]" type="text" class="input" /><br>`;
   $('.dynamicInput').append(newListItem);
   inputCounter++;
 };
 
 let addDirection = () => {
   let newDirectionItem =`
-  <label class="directions-label input-label" for="directions">
-  </label>
-  <input id="directions" name="directionsList[]" type="text" class="input" />`;
+  <input id="directions" name="directionsList[]" type="text" class="input" /><br>`;
   $('.dynamicDirections').append(newDirectionItem);
   directionsCounter++;
 };
@@ -150,14 +141,6 @@ $homeButton.on('click', () => {
 
 $addRecipeButton.on('click', () => {
   pageNav('add-recipe.html');
-});
-
-$searchInput.on('keyup', () => {
-  if ($searchInput.val()) {
-    $searchButton.prop('disabled', false);
-  } else {
-    $searchButton.prop('disabled', true);
-  }
 });
 
 $ingredients.on('keyup', () => {

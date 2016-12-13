@@ -28,34 +28,3 @@ body {
   height: 100vh;
   width: 100vw;
 }
-
-/* MAIN BUTTON STYLES */
-
-.footer-button,
-.save-recipe-button,
-.cancel-recipe-button {
-  background: #ff7844;
-  border-radius: 15px;
-  border: none;
-  color: #1B1F3A;
-  font-size: 15px;
-  font-weight: bold;
-  height: 35px;
-  min-width: 130px;
-}
-
-.footer-button:hover,
-.cancel-recipe-button:hover,
-.save-recipe-button:hover {
-  background: #FFF;
-  color: #FF7844;
-}
-
-.button-container {
-  align-items: baseline;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 0 auto;
-  width: 80vw;
-}

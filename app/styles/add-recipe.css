@@ -12,26 +12,62 @@
   width: 90vw;
 }
 
-.two-columns {
+.button-container,
+.two-columns,
+.left-container,
+.right-container,
+.dynamicDirections  {
   display: flex;
+}
+
+.button-container,
+.two-columns {
   flex-direction: row;
+}
+
+.left-container,
+.right-container,
+.dynamicDirections {
+  flex-direction: column;
+}
+
+.button-container {
+  align-items: baseline;
+  justify-content: space-around;
+  margin: 0 auto;
+  width: 80vw;
+}
+
+.save-recipe-button,
+.cancel-recipe-button {
+  background-color: #1B1F3A;
+  border-radius: 15px;
+  border: none;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  height: 35px;
+  letter-spacing: .11em;
+  min-width: 130px;
+}
+
+.save-recipe-button:hover,
+.cancel-recipe-button:hover {
+  background: #FFF;
+  color: #1B1F3A;
+}
+
+.two-columns {
   min-height: 90%;
 }
 
 .left-container,
 .right-container {
-  display: flex;
-  flex-direction: column;
   width: 50%;
 }
 
 .dynamicInput {
   margin-top: 5px;
-}
-
-.dynamicDirections {
-  display: flex;
-  flex-direction: column;
 }
 
 .input-label {
@@ -52,14 +88,18 @@
 .new-ingredient-button,
 .new-direction-button {
   background: #ff7844;
-  border-radius: 15px;
   border: none;
+  border-radius: 15px;
   color: #1B1F3A;
   font-size: 15px;
+  height: 25px;
   margin-left: 40px;
   margin-top: 10px;
-  height: 25px;
   width: 200px;
+}
+
+.new-direction-button {
+  margin-top: 0;
 }
 
 .new-ine
@@ -72,22 +112,23 @@
 }
 
 .photo-upload::-webkit-file-upload-button {
- visibility: hidden;
+  visibility: hidden;
 }
 
 .photo-upload::before {
- background-color: #FF7844;
- border-radius: 15px;
- color: #1B1F3A;
- content: 'Select a file';
- cursor: pointer;
- display: inline-block;
- font-size: 15px;
- font-weight: 500;
- margin-left: 15px;
- width: 120px;
- padding: 5px 8px;
- text-align: center;
+  background-color: #FF7844;
+  border-radius: 15px;
+  color: #1B1F3A;
+  content: 'Select a file';
+  cursor: pointer;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 500;
+  height: 25px;
+  margin-left: 40px;
+  padding: 5px 8px;
+  text-align: center;
+  width: 200px;
 }
 
 .photo-upload:hover::before {

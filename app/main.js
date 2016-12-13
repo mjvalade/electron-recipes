@@ -41,7 +41,7 @@ const recipeStorageExists = () => {
           console.error(err);
         });
       }
-    });
+  });
 };
 
 const getRecipes = exports.getRecipes = () => {
@@ -61,21 +61,6 @@ const saveRecipe = exports.saveRecipe = (recipe) => {
     let updatedRecipes = { recipes: data.recipes };
     storage.set('saved-recipes', updatedRecipes)
       .then(() => {console.log('Updated recipe list', updatedRecipes);
-      })
-      .catch((err) => console.log(err));
-  })
-  .catch(err => console.log(err));
-};
-
-const deleteRecipe = exports.deleteRecipe = (recipe) => {
-  storage.get('saved-recipes')
-  .then((data) => {
-    data.recipes.filter((recipe) => {
-      return recipe.id !== id;
-    });
-    let updatedRecipes = { recipes: data.recipes };
-    storage.set('saved-recipes', updatedRecipes)
-      .then(() => {console.log('Shorter recipe list', updatedRecipes);
       })
       .catch((err) => console.log(err));
   })
