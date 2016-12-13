@@ -6,6 +6,8 @@ const {
 const storage = require('electron-storage');
 
 let win = null;
+let recipe;
+let recipes = [];
 
 app.on('ready', () => {
   recipeStorageExists();
@@ -49,16 +51,17 @@ const getRecipes = exports.getRecipes = () => {
   });
 };
 
-const getOneRecipe = exports.getOneRecipe = (id) => {
-  storage.get('saved-recipes')
-  .then(data => {
-    console.log('one recipe?', data);
-    win.webContents.send('retrieved-onerecipe', data);
-  })
-  .catch(err => {
-    console.error(err);
-  });
-};
+// const getOneRecipe = exports.getOneRecipe = (id) => {
+//   storage.get('saved-recipes')
+//   .then(data => {
+//     recipe = data.recipes.find((id) => id === recipe.id);
+//     console.log('one recipe?', recipe);
+//     win.webContents.send('retrieved-onerecipe', recipe);
+//   })
+//   .catch(err => {
+//     console.error(err);
+//   });
+// };
 
 const saveRecipe = exports.saveRecipe = (recipe) => {
   storage.get('saved-recipes')
@@ -67,6 +70,21 @@ const saveRecipe = exports.saveRecipe = (recipe) => {
     let updatedRecipes = { recipes: data.recipes };
     storage.set('saved-recipes', updatedRecipes)
       .then(() => {console.log('Updated recipe list', updatedRecipes);
+      })
+      .catch((err) => console.log(err));
+  })
+  .catch(err => console.log(err));
+};
+
+const deleteRecipe = exports.deleteRecipe = (recipe) => {
+  storage.get('saved-recipes')
+  .then((data) => {
+    data.recipes.filter((recipe) => {
+      return recipe.id !== id;
+    });
+    let updatedRecipes = { recipes: data.recipes };
+    storage.set('saved-recipes', updatedRecipes)
+      .then(() => {console.log('Shorter recipe list', updatedRecipes);
       })
       .catch((err) => console.log(err));
   })

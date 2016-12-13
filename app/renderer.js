@@ -17,37 +17,40 @@ const $searchInput = $('.search-input');
 const $recipeContainer = $('.recipe-list-container');
 const $recipeCard = $('.recipe-card');
 const $fullContainer = $('.full-recipe-container');
+const $deleteButton = $('.delete-button');
 
 mainProcess.getRecipes();
-mainProcess.getOneRecipe();
+// mainProcess.getOneRecipe();
 
 ipcRenderer.on('retrieved-recipes', (event, data) => {
   console.log('ipc data', data.recipes);
   renderRecipeCard(data);
 });
 
-ipcRenderer.on('retrieved-onerecipe', (event, data) => {
-  console.log('ipc one recipe', data.recipes);
-  renderFullRecipe(data);
-});
+// ipcRenderer.on('retrieved-onerecipe', (event, data) => {
+//   // console.log('ipc one recipe', data.recipes);
+//   renderFullRecipe(data);
+// });
 
 const renderRecipeCard = (data) => {
   $recipeContainer.empty();
   data.recipes.forEach((recipe) => {
     $recipeContainer.append(`
+      <a href="full-recipe.html">
       <section class="recipe-card" id=${recipe.id}>
         <img src="" alt="food image" />
         <article class="card-content">
           <h1 class="recipe-title">${recipe.name}</h1>
         </article>
       </section>
+      </a>
     `);
   });
 };
 
 const renderFullRecipe = (data) => {
   $fullContainer.empty();
-  data.recipes.filter((id) => {
+  data.recipes.find((id) => {
     $fullContainer.append(`
       <div class="full-recipe" id=${recipe.id}>
         <p class="display-name">
@@ -81,6 +84,9 @@ const renderFullRecipe = (data) => {
             Notes: ${recipe.notes}
           </h3>
         </p>
+        <button class="footer-button delete-button">
+          Delete
+        </button>
       </div>
     `);
   });
@@ -124,8 +130,8 @@ $searchInput.on('keyup', () => {
   }
 });
 
-$recipeCard.on('click', () => {
+$recipeCard.on('click', (id) => {
   // mainProcess.getOneRecipe(id);
   pageNav('full-recipe.html');
-  // renderFullRecipe(id);
+  renderFullRecipe(id);
 });
