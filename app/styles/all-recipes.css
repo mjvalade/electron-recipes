@@ -1,10 +1,11 @@
-.title-all {
-  text-align: center;
+/*.title-all {
+  color: #ff7844;
+  font-size: 2em;
+  font-weight: bold;
   margin-bottom: 20px;
   margin-top: 20px;
-  font-size: 2em;
-  color: #ff7844;
-}
+  text-align: center;
+}*/
 
 a {
   text-decoration: none;
@@ -15,6 +16,11 @@ a {
   flex-wrap: wrap;
   justify-content: space-around;
   margin-bottom: 75px;
+  margin-top: 30px;
+}
+
+.hidden {
+  display: none;
 }
 
 .recipe-card {

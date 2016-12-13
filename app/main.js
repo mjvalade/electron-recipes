@@ -54,18 +54,6 @@ const getRecipes = exports.getRecipes = () => {
   });
 };
 
-// const getOneRecipe = exports.getOneRecipe = (id) => {
-//   storage.get('saved-recipes')
-//   .then(data => {
-//     recipe = data.recipes.find((id) => id === recipe.id);
-//     console.log('one recipe?', recipe);
-//     win.webContents.send('retrieved-onerecipe', recipe);
-//   })
-//   .catch(err => {
-//     console.error(err);
-//   });
-// };
-
 const saveRecipe = exports.saveRecipe = (recipe) => {
   storage.get('saved-recipes')
   .then((data) => {

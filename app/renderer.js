@@ -3,6 +3,7 @@ const mainProcess = remote.require('./main');
 const currentWindow = remote.getCurrentWindow();
 
 const $addRecipeButton = $('.add-button');
+const $closeButton = $('.close-button');
 const $directions = $('#directions');
 const $fullContainer = $('.full-recipe-container');
 const $homeButton = $('.home-button');
@@ -25,18 +26,23 @@ const array = [];
 let inputCounter = 1;
 
 mainProcess.getRecipes();
-// mainProcess.getOneRecipe();
 
 ipcRenderer.on('retrieved-recipes', (event, data) => {
   data.recipes.forEach((r) => array.push(r));
   console.log('ipc data', array);
   renderRecipeCard(array);
+  renderFullRecipe(array);
 });
 
-// ipcRenderer.on('retrieved-onerecipe', (event, data) => {
-//   // console.log('ipc one recipe', data.recipes);
-//   renderFullRecipe(data);
-// });
+const toggleClass = () => {
+  $recipeContainer.toggleClass('hidden');
+  $fullContainer.toggleClass('hidden');
+};
+
+$('.close-button').on('click', () => {
+  console.log('close click');
+  toggleClass();
+});
 
 const renderRecipeCard = (recipes) => {
   $recipeContainer.empty();
@@ -51,7 +57,7 @@ const renderRecipeCard = (recipes) => {
     `);
   });
   $('.recipe-card').on('click', (e) => {
-    pageNav('full-recipe.html');
+    toggleClass();
     renderFullRecipe(parseInt(e.currentTarget.id));
   });
 };
@@ -60,41 +66,35 @@ const renderFullRecipe = (id) => {
   $fullContainer.empty();
   array.forEach(recipe => {
     if(recipe.id === id) {
-      debugger
       $fullContainer.append(`
         <div class="full-recipe" id=${recipe.id}>
+          <section class="top-buttons">
+            <button class="close-button">
+              &#88;
+            </button>
+            <button class="footer-button delete-button">
+              Delete Recipe
+            </button>
+          </section>
           <p class="display-name">
-            Recipe Name: ${recipe.name}
+            <span class="labels">${recipe.name}</span>
           </p>
-          <img src="" alt="food image" />
-          <p class="display-servings">
-            <h3>
-              Number of Servings: ${recipe.servings}
-            </h3>
+          <img src="" alt="food image" class="display-photo" />
+          <p class="display-text">
+              <span class="labels">Number of Servings: </span>${recipe.servings}
           </p>
-          <p class="display-time">
-            <h3>
-              Cook Time: ${recipe.time}
-            </h3>
+          <p class="display-text">
+              <span class="labels">Cook Time: </span>${recipe.time}
           </p>
-          <p class="display-ingredients">
-            <h3>
-              Ingredients: ${recipe.ingredients}
-            </h3>
+          <p class="display-text">
+              <span class="labels">Ingredients: </span>${recipe.ingredients}
           </p>
-          <p class="display-directions">
-            <h3>
-              Directions: ${recipe.directions}
-            </h3>
+          <p class="display-text">
+              <span class="labels">Directions: </span>${recipe.directions}
           </p>
-          <p class="display-notes">
-            <h3>
-              Notes: ${recipe.notes}
-            </h3>
+          <p class="display-text">
+              <span class="labels">Notes: </span>${recipe.notes}
           </p>
-          <button class="footer-button delete-button">
-            Delete
-          </button>
         </div>
       `);
     }
@@ -131,7 +131,7 @@ $saveButton.on('click', () => {
   let notes = $notes.val();
   let recipe = { id, name, servings, time, ingredients, directions, notes};
   mainProcess.saveRecipe(recipe);
-  pageNav('full-recipe.html');
+  pageNav('all-recipes.html');
 });
 
 $seeAllButton.on('click', () => {
