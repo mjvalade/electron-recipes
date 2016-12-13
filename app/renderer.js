@@ -17,9 +17,10 @@ const $searchInput = $('.search-input');
 const $seeAllButton = $('.see-all-button');
 const $servings = $('#servings');
 const $time = $('#time');
-const $newDirections = $('.new-direction-button');
+const $newDirection = $('.new-direction-button');
 
 let inputCounter = 1;
+let directionsCounter = 1;
 
 mainProcess.getRecipes();
 
@@ -54,14 +55,27 @@ let addInput = () => {
       Ingredient ${inputCounter + 1}:
     </label>
     <input id="ingredients" name="ingredientsList[]" type="text" class="input" />`;
-
-  $('.dynamicIngredient').append(newListItem);
+  $('.dynamicInput').append(newListItem);
   inputCounter++;
+};
+
+let addDirection = () => {
+  let newDirectionItem =`
+  <label class="directions-label input-label" for="directions">
+  </label>
+  <input id="directions" name="directionsList[]" type="text" class="input" />`;
+  $('.dynamicDirections').append(newDirectionItem);
+  directionsCounter++;
 };
 
 $newIngredient.on('click', (e) => {
   e.preventDefault();
   addInput();
+});
+
+$newDirection.on('click', (e) => {
+  e.preventDefault();
+  addDirection();
 });
 
 $saveButton.on('click', () => {
@@ -94,22 +108,6 @@ $searchInput.on('keyup', () => {
     $searchButton.prop('disabled', false);
   } else {
     $searchButton.prop('disabled', true);
-  }
-});
-
-$ingredients.on('keyup', () => {
-  if ($ingredients.val()) {
-    $newIngredient.prop('disabled', false);
-  } else {
-    $newIngredient.prop('disabled', true);
-  }
-});
-
-$ingredients.on('keyup', () => {
-  if ($ingredients.val()) {
-    $newIngredient.prop('disabled', false);
-  } else {
-    $newIngredient.prop('disabled', true);
   }
 });
 
